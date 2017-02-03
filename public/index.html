@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Survey Questions</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <!--  <link rel="stylesheet" type="text/css" href="stylesheets/datepicker.css"> -->
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="js/formvalidate.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+ </head>
+
+  <body>
+	<!-- multistep form -->
+	<form name="surveyform" id="msform" action="/send_to_cloudant" method="get">
+	<!-- progressbar -->
+	<ul id="progressbar">
+		<li class="active">Welcome</li>
+		<li>*</li>
+		<li>*</li>
+		<li>*</li>
+		<li>*</li>
+		<li>*</li>
+		<li>*</li>
+		<li>*</li>
+		<li>*</li>
+		<li>Thank you</li>
+	</ul>
+	<!-- fieldsets -->
+	<fieldset>
+		<h2 class="fs-title">Welcome to the Survey</h2>
+        <!-- <img class = "newappIcon" src="images/bluemix_logo.png" style="width:auto;height: auto; max-width:250px; max-height:250px"> -->
+        
+        <table style="margin-left: 8%">
+    	    <tr>
+    	    	<td align="center">
+    	    	 	<img class = "newappIcon" src="images/bluemix_logo.png" style="width:auto;height: auto; max-width:180px; max-height:180px">
+    	    	</td>
+    	    </tr>
+
+			<tr>
+				<td align="left">	
+						<label for="city">City  : </label>
+     				    <!-- <select name="cityname" id="cityname" form="msform"> -->
+     				    <select name="cityname" id="cityname" style="width: 75%">
+							
+							<option value="austin" style="font-family: montserrat, arial, verdana">AUSTIN</option>
+							<option value="boston" style="font-family: montserrat, arial, verdana">BOSTON</option>
+							<option value="chicago" style="font-family: montserrat, arial, verdana">CHICAGO</option>
+							<option value="dallas" style="font-family: montserrat, arial, verdana">DALLAS</option>
+							<option value="denver" style="font-family: montserrat, arial, verdana">DENVER</option>
+				  			<option value="losangeles" style="font-family: montserrat, arial, verdana">LOS ANGELES</option>
+				      		<option value="nyc" style="font-family: montserrat, arial, verdana">NEW YORK CITY</option>
+				      		<option value="portland" style="font-family: montserrat, arial, verdana">PORTLAND</option>
+				  			<option value="raleigh" style="font-family: montserrat, arial, verdana">RALEIGH</option>
+							<option value="seattle" style="font-family: montserrat, arial, verdana">SEATTLE</option>
+							<option value="siliconvalley" style="font-family: montserrat, arial, verdana">SILICON VALLEY</option>
+													
+						</select>
+						<br>
+						</br>
+						
+				</td>
+			</tr>
+			<tr>
+				<td align="left" id="event_date_display">
+				</td>	
+			</tr>
+			<tr>
+				<input id="eventdate" type="text" name="eventdate" readonly style="display:none">
+			</tr>
+		</table>       
+        <input type="button" name="next" class="next action-button" value="Next" />
+	</fieldset>
+	<!-- Question 1 -->
+	<fieldset id="meet_needs">
+	    <h2 class="fs-title">Did the event today meet your needs ?</h2>
+		<h3 class="fs-subtitle">Enter below</h3>
+		<table style="margin-left: 15%">
+			<tr>
+				<td align="left">	
+					<input style="width: 20px !important;height:20px !important;" class="all_radio_buttons" id="yes_needs" type="radio" name="q1_eventneeds" value="yes" checked="checked"/>
+					<label for="yes_needs">Yes</label>
+					<br>
+	    			<input style="width: 20px !important;height:20px !important;" class="all_radio_buttons" id="no_needs" type="radio" name="q1_eventneeds" value="no">
+	    			<label for="no_needs">No</label>
+				</td>
+			</tr>
+		</table>
+		<input type="button" name="previous" class="previous action-button" value="Previous" />
+		<input type="button" name="next" class="next action-button" value="Next" />
+	</fieldset>
+	
+	<!-- Question 2 -->
+	
+	<fieldset id="host_rating">
+		<h2 class="fs-title">How would you rate the presenter(s) ?</h2>
+		<h3 class="fs-subtitle">Choose from below</h3>
+		<table style="margin-left: 15%">
+			<tr>
+				<td align="left">	
+					<input id="host1" type="radio" name="q2_facilitator" value="1"/>
+					<label for="host1">1(poor)</label>
+					<br>
+	    			<input id="host2" type="radio" name="q2_facilitator" value="2"/>
+					<label for="host2">2</label>
+					<br>
+					<input id="host3" type="radio" name="q2_facilitator" value="3"/>
+					<label for="host3">3</label>
+					<br>
+					<input id="host4" type="radio" name="q2_facilitator" value="4"/>
+					<label for="host4">4</label>
+					<br>
+					<input id="host5" type="radio" name="q2_facilitator" value="5" checked="checked"/>
+					<label for="host5">5(great)</label>
+					<br>
+				</td>
+			</tr>
+		</table>
+		<input type="button" name="previous" class="previous action-button" value="Previous" />
+		<input type="button" name="next" class="next action-button" value="Next" />
+	</fieldset>
+	
+	<!-- Question 3 -->
+	
+	<fieldset id="recommendations">
+		<h2 class="fs-title">What improvements would you recommend for the next event ?</h2>
+		<h3 class="fs-subtitle">Enter improvement suggestions or NA</h3>
+		<!-- <textarea id="q5_recommendations" rows="4" cols="50" required></textarea><br> -->
+		<input type="text" class="tab" name="q3_recommendations" id="q3_recommendations" required>
+		<input type="button" id="prev_reco" name="previous" class="previous action-button" value="Previous" />
+		<input type="button" id="next_reco" name="next" class="next action-button" value="Next" />
+	</fieldset>
+	
+	<!-- Question 4 -->
+		
+	<fieldset id="runtime">
+		<h2 class="fs-title">What is your favourite runtime ?</h2>
+		<h3 class="fs-subtitle">Choose from below</h3>
+		<table style="margin-left: 15%">
+			<tr>
+				<td align="left">
+						<input id="no_code" type="radio" name="q4_runtime" value="no_code"/>
+						<label for="no_code">Not a developer</label>
+						<br>
+						<input id="java" type="radio" name="q4_runtime" value="java"/>
+						<label for="java">Java</label>
+					    <br>
+					    <input id="nodejs"type="radio" name="q4_runtime" value="node js" checked="checked"/>
+					    <label for="nodejs">Node JS</label>
+					    <br>
+						<input id="ruby" type="radio" name="q4_runtime" value="ruby"/>
+						<label for="ruby">Ruby</label>
+					    <br>
+						<input id="python" type="radio" name="q4_runtime" value="python"/>
+						<label for="python">Python</label>
+					    <br>
+						<input id="php" type="radio" name="q4_runtime" value="php"/>
+						<label for="php">PHP</label>
+					    <br>
+						<input id="go" type="radio" name="q4_runtime" value="go"/>
+						<label for="go">Go</label>
+					    <br>
+						<input id="objc" type="radio" name="q4_runtime" value="objc"/>
+						<label for="objc">Objective C</label>
+					    <br>
+						<input id="swift" type="radio" name="q4_runtime" value="swift"/>
+						<label for="objc">Swift</label>
+					    <br>
+					    <input id="cpp" type="radio" name="q4_runtime" value="cpp"/>
+						<label for="cpp">C, C++</label>
+					    <br>
+						<input id="html" type="radio" name="q4_runtime" value="html"/>
+						<label for="html">HTML</label>
+					    <br>
+					    <input id="net" type="radio" name="q4_runtime" value="net"/>
+						<label for="net">.NET</label>
+					    <br>
+						<input id="perl" type="radio" name="q4_runtime" value="perl"/>
+						<label for="perl">Perl</label>
+					    <br>
+						<input id="other_runtime" type="radio" name="q4_runtime" value="other_runtime"/>
+						<label for="other_runtime">Other</label>
+						<br>
+						<input type="text" placeholder="Enter other runtime" name="other_runtime_entry" id="other_runtime_entry" style="padding-left: 5px; margin-left: 30px; width: 155px !important;" disabled><br>
+				</td>
+			</tr>
+		</table>
+		<input type="button" name="previous" class="previous action-button" value="Previous" />
+		<input type="button" name="next" class="next action-button" value="Next" />
+	</fieldset>
+	
+	<!-- Question 5 -->
+	
+	<fieldset id="stack">
+		<h2 class="fs-title">Describe your ideal stack </h2>
+		<h3 class="fs-subtitle">Choose from below</h3>
+		<table style="margin-left: 15%">
+			<tr>
+				<td align="left">
+					<input id="not_dev" type="radio" name="q5_stack" value="not_dev"/>
+					<label for="not_dev">Not a developer</label>
+					<br>
+					<input id="lamp" type="radio" name="q5_stack" value="lamp"/>
+					<label for="lamp">LAMP</label>
+					<br>
+					<input id="mean" type="radio" name="q5_stack" value="mean" checked="checked"/>
+					<label for="mean">MEAN</label>
+					<br>
+					<input id="open_stack" type="radio" name="q5_stack" value="open_stack"/>
+					<label for="open_stack">Open Stack</label>
+					<br>
+					<input id="lyme" type="radio" name="q5_stack" value="lyme"/>
+					<label for="lyme">LYME</label>
+					<br>					
+					<input id="xampp" type="radio" name="q5_stack" value="xampp"/>
+					<label for="xampp">XAMPP</label>
+					<br>
+					<input id="mamp" type="radio" name="q5_stack" value="mamp"/>
+					<label for="mamp">MAMP</label>
+					<br>
+					<input id="wamp" type="radio" name="q5_stack" value="wamp"/>
+					<label for="wamp">WAMP</label>
+					<br>
+					<input id="other_stack" type="radio" name="q5_stack" value="other_stack"/>
+					<label for="other_stack">Other</label>
+					<br>
+					<input type="text" placeholder="Enter stack.." name="other_stack_entry" id="other_stack_entry" style="padding-left: 5px; margin-left: 30px; width: 155px !important;" disabled><br>
+				</td>
+			</tr>
+		</table>
+		<input type="button" name="previous" class="previous action-button" value="Previous" />
+		<input type="button" name="next" class="next action-button" value="Next" />
+	</fieldset>
+	
+	<!-- Question 6 -->
+	
+	<fieldset id="features">
+		<h2 class="fs-title">What new features would you like to see in Bluemix ?</h2>
+		<h3 class="fs-subtitle">Enter new feature suggestions or NA</h3>
+		<!-- <textarea id="q3_newfeatures" rows="4" cols="50" required></textarea><br>	-->
+		<input type="text" class="tab" name="q6_newfeatures" id="q6_newfeatures" required>
+		<input type="button" name="previous" class="previous action-button" value="Previous" />
+		<input type="button" name="next" class="next action-button" value="Next" />
+	</fieldset>
+	
+	<!-- Question 7 -->
+	
+	<fieldset id="use_bluemix">
+		<h2 class="fs-title">Will you use IBM Bluemix in the future for deploying your project ?</h2>
+		<h3 class="fs-subtitle">Choose from below</h3>		
+		<table style="margin-left: 15%">
+			<tr>
+				<td align="left">	
+					<input id="use_bluemix_yes" type="radio" name="q7_useBlumeix" value="yes" checked="checked"/>
+					<label for="use_bluemix_yes">Yes</label>
+					<br>
+					<input id="use_bluemix_maybe" type="radio" name="q7_useBlumeix" value="maybe"/>
+					<label for="use_bluemix_maybe">Maybe</label>
+	    			<br>
+	    			<input id="use_bluemix_no" type="radio" name="q7_useBlumeix" value="no"/>
+	    			<label for="use_bluemix_no">No</label>
+	    			<br>
+					<input type="text" placeholder="Why not ? .." name="no_reason" id="no_reason" style="padding-left: 5px; margin-left: 30px; width: 150px !important;" disabled><br>
+ 				</td>
+			</tr>
+		</table>
+		<input type="button" name="previous" class="previous action-button" value="Previous" />
+		<input type="button" name="next" class="next action-button" value="Next" />
+	</fieldset>
+	
+	<!-- Question 8. Not mandatory -->
+	<fieldset id="emailID">
+		<h2 class="fs-title">Email/Twitter handle </h2>
+		<!-- <h3 class="fs-subtitle">To be followed up with </h3> -->
+		<input type="text" class="tab" name="q8_email_twit" id="q8_email_twit">
+		<input type="button" name="previous" class="previous action-button" value="Previous" />
+		<!-- <input type="submit" name="submit" class="submit action-button" value="Submit" /> -->
+		<input type="submit" name="submit" class="submit action-button" value="Submit" />
+	</fieldset>
+   </form>
+   
+  <div id="thankyou" name="thankyou" align="center">
+	<h3>Thank you for taking the survey</h3>
+  	<img class = "newappIcon" src="images/bluemix_logo.png" style="width:auto;height: auto; max-width:250px; max-height:250px">
+  </div>
+
+ </body>
+</html>
